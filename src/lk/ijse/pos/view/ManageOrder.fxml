@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="635.0" prefWidth="900.0" stylesheets="@style/Style..css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.controller.ManageOrderController">
+   <children>
+      <ImageView fitHeight="319.0" fitWidth="335.0" layoutX="25.0" layoutY="-109.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/logo.png" />
+         </image>
+      </ImageView>
+      <JFXComboBox layoutX="25.0" layoutY="210.0" prefHeight="35.0" prefWidth="152.0" promptText="Item Code" />
+      <ImageView id="imgHome" fitHeight="45.0" fitWidth="45.0" layoutX="16.0" layoutY="16.0" onMouseClicked="#navigateToBack" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <image>
+            <Image url="@assests/back_96px.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="320.0" layoutY="81.0" prefHeight="3.0" prefWidth="553.0" />
+      <Label alignment="CENTER" layoutX="343.0" layoutY="21.0" prefHeight="35.0" prefWidth="521.0" styleClass="liner-title" stylesheets="@style/Style..css" text="Manage Order" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="157.0" layoutY="112.0" prefHeight="35.0" prefWidth="118.0" text="O00-001" textFill="#1500ff">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" alignment="CENTER_RIGHT" layoutX="39.0" layoutY="154.0" prefHeight="35.0" prefWidth="130.0" text="2021-10-11">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="39.0" layoutY="114.0" prefHeight="35.0" prefWidth="118.0" text="ORDER ID :">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="197.0" layoutY="210.0" prefHeight="35.0" prefWidth="203.0" promptText="Description">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <JFXComboBox layoutX="320.0" layoutY="136.0" prefHeight="35.0" prefWidth="161.0" promptText="Customer Id" />
+      <TextField layoutX="515.0" layoutY="136.0" prefHeight="35.0" prefWidth="248.0" promptText="Name">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="420.0" layoutY="210.0" prefHeight="35.0" prefWidth="161.0" promptText="Unit Price">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="604.0" layoutY="210.0" prefHeight="35.0" prefWidth="118.0" promptText="Qty On Hand">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="763.0" layoutY="210.0" prefHeight="35.0" prefWidth="118.0" promptText="Qty">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Separator layoutX="737.0" layoutY="210.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="4.0" />
+      <JFXButton buttonType="RAISED" layoutX="755.0" layoutY="271.0" prefHeight="35.0" prefWidth="105.0" style="-fx-background-color: #3667f7;" text="Add To Cart" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="667.0" layoutY="271.0" prefHeight="35.0" prefWidth="67.0" ripplerFill="#962525" style="-fx-background-color: #678f5b;" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView layoutX="38.0" layoutY="324.0" prefHeight="231.0" prefWidth="829.0">
+         <columns>
+            <TableColumn prefWidth="158.0" text="Item Code" />
+            <TableColumn prefWidth="285.0" text="Description" />
+            <TableColumn prefWidth="89.0" text="Qty" />
+            <TableColumn prefWidth="136.0" text="Unit Price" />
+            <TableColumn prefWidth="160.0" text="Total" />
+         </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="757.0" layoutY="572.0" prefHeight="35.0" prefWidth="102.0" style="-fx-background-color: #3a1ce6;" text="Place Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="38.0" layoutY="566.0" text="TOTAL :">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="157.0" layoutY="566.0" prefHeight="47.0" prefWidth="161.0" text="1000.00/=" textFill="RED">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
