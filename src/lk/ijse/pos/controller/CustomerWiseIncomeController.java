@@ -11,16 +11,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class PaymentManageController {
+public class CustomerWiseIncomeController {
     public AnchorPane root;
 
     public void navigateToBack(MouseEvent event) throws IOException {
-        URL resource = this.getClass().getResource("/lk/ijse/pos/view/CashierMain.fxml");
+        URL resource = this.getClass().getResource("/lk/ijse/pos/view/AdminMain.fxml");
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         Stage primaryStage = (Stage) (this.root.getScene().getWindow());
         primaryStage.setScene(scene);
-        primaryStage.setTitle("CASHIER MAIN VIEW   |   YASIRU DAHANAYAKA");
+        primaryStage.setTitle("ADMIN MAIN VIEW   |   YASIRU DAHANAYAKA");
         primaryStage.centerOnScreen();
         Platform.runLater(() -> primaryStage.sizeToScene());
     }

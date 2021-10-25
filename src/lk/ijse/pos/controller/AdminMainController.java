@@ -49,16 +49,16 @@ public class AdminMainController {
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/pos/view/ItemManage.fxml"));
                     break;
                 case "imgCustomerIncome":
-                    root = FXMLLoader.load(this.getClass().getResource(""));
+                    root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/pos/view/CustomerWiseIncome.fxml"));
                     break;
                 case "imgItemMove":
-                    root = FXMLLoader.load(this.getClass().getResource("/view/place-order-form.fxml"));
+                    root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/pos/view/ItemMovable.fxml"));
                     break;
                 case "imgBusinessIncome":
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/pos/view/BusinessIncome.fxml"));
                     break;
                 case "imgViewReport":
-                    root = FXMLLoader.load(this.getClass().getResource(" "));
+                    root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/pos/view/ViewReport.fxml"));
                     break;
             }
 
@@ -138,7 +138,7 @@ public class AdminMainController {
         Parent root = FXMLLoader.load(resource);
         Scene scene = new Scene(root);
         Stage primaryStage = (Stage) (this.root.getScene().getWindow());
-        primaryStage.setTitle("ADMIN MAIN VIEW   |   YASIRU DAHANAYAKA");
+        primaryStage.setTitle("SUPERMARKET POS SYSTEM   |   YASIRU DAHANAYAKA");
         primaryStage.setScene(scene);
         primaryStage.centerOnScreen();
         Platform.runLater(() -> primaryStage.sizeToScene());

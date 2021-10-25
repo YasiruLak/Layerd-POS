@@ -53,6 +53,7 @@
 .textField{
     -fx-background-color: white;
     -fx-prompt-text-fill: #726d6d;
+    -fx-background-radius: 30px;
 }
 
 .textLabel{
@@ -84,4 +85,23 @@
 .liner-title {
     -fx-background-radius: 30px;
     -fx-background-color: linear-gradient(to left, #497dd1, #1d3152);
+}
+.btnAddNew{
+    -fx-background-color: #004687;
+    -fx-text-fill: white;
+    -fx-background-radius: 30px;
+}
+
+.btnSave{
+    -fx-background-color: #496a8a;
+    -fx-text-fill: white;
+    -fx-background-radius: 30px;
+    -fx-font-weight: bold;
+}
+
+.btnDelete{
+    -fx-background-color: #557857;
+    -fx-text-fill: white;
+    -fx-background-radius: 30px;
+    -fx-font-weight: bold;
 }

@@ -24,7 +24,7 @@ public class BusinessIncomeController {
         Scene scene = new Scene(root);
         Stage primaryStage = (Stage) (this.root.getScene().getWindow());
         primaryStage.setScene(scene);
-        primaryStage.setTitle("SUPERMARKET POS SYSTEM   |   YASIRU DAHANAYAKA");
+        primaryStage.setTitle("ADMIN MAIN VIEW   |   YASIRU DAHANAYAKA");
         primaryStage.centerOnScreen();
         Platform.runLater(() -> primaryStage.sizeToScene());
     }

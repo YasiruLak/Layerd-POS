@@ -13,12 +13,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="root" prefHeight="635.0" prefWidth="900.0" stylesheets="@style/Style..css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.controller.ManageOrderController">
+<AnchorPane fx:id="root" prefHeight="635.0" prefWidth="900.0" stylesheets="@assests/style/Style..css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.controller.ManageOrderController">
    <children>
       <ImageView fitHeight="319.0" fitWidth="335.0" layoutX="25.0" layoutY="-109.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assests/logo.png" />
+            <Image url="@assests/image/logo.png" />
          </image>
       </ImageView>
       <JFXComboBox layoutX="25.0" layoutY="210.0" prefHeight="35.0" prefWidth="152.0" promptText="Item Code" />
@@ -27,11 +26,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <image>
-            <Image url="@assests/back_96px.png" />
+            <Image url="@assests/image/back_96px.png" />
          </image>
       </ImageView>
       <Separator layoutX="320.0" layoutY="81.0" prefHeight="3.0" prefWidth="553.0" />
-      <Label alignment="CENTER" layoutX="343.0" layoutY="21.0" prefHeight="35.0" prefWidth="521.0" styleClass="liner-title" stylesheets="@style/Style..css" text="Manage Order" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="343.0" layoutY="21.0" prefHeight="35.0" prefWidth="521.0" styleClass="liner-title" text="Manage Order" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>

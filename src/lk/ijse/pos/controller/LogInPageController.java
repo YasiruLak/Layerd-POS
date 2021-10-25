@@ -20,7 +20,7 @@ public class LogInPageController{
     public JFXPasswordField pswPassword;
     public JFXButton btnLogIn;
 
-    public void logInOnAction(ActionEvent actionEvent) throws IOException {
+    public void btnLogInOnAction(ActionEvent actionEvent) throws IOException {
 
         if (txtUserName.getText().equals("A")){
 
