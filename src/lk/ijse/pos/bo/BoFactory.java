@@ -23,12 +23,14 @@ public class BoFactory {
                 return new ItemBOImpl();
             case CUSTOMER:
                 return new CustomerBOImpl();
+            case ORDER:
+                return new OrderBOImpl();
             default:
                 return null;
         }
     }
 
     public enum BoTypes {
-        CUSTOMER, ITEM
+        CUSTOMER, ITEM, ORDER
     }
 }

@@ -2,25 +2,25 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="635.0" prefWidth="900.0" stylesheets="@assests/style/Style..css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.controller.ManageOrderController">
+<AnchorPane fx:id="root" prefHeight="638.0" prefWidth="900.0" stylesheets="@assests/style/Style..css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.controller.ManageOrderController">
    <children>
       <ImageView fitHeight="319.0" fitWidth="335.0" layoutX="25.0" layoutY="-109.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assests/image/logo.png" />
          </image>
       </ImageView>
-      <JFXComboBox layoutX="25.0" layoutY="210.0" prefHeight="35.0" prefWidth="152.0" promptText="Item Code" />
+      <JFXComboBox fx:id="cmbItemCode" layoutX="25.0" layoutY="200.0" prefHeight="35.0" prefWidth="152.0" promptText="Item Code" />
       <ImageView id="imgHome" fitHeight="45.0" fitWidth="45.0" layoutX="16.0" layoutY="16.0" onMouseClicked="#navigateToBack" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -35,7 +35,7 @@
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="157.0" layoutY="112.0" prefHeight="35.0" prefWidth="118.0" text="O00-001" textFill="#1500ff">
+      <Label fx:id="lblId" alignment="CENTER_RIGHT" layoutX="39.0" layoutY="116.0" prefHeight="40.0" prefWidth="209.0" text="O00-001" textFill="#1500ff">
          <font>
             <Font size="28.0" />
          </font>
@@ -45,39 +45,8 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="39.0" layoutY="114.0" prefHeight="35.0" prefWidth="118.0" text="ORDER ID :">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <TextField layoutX="197.0" layoutY="210.0" prefHeight="35.0" prefWidth="203.0" promptText="Description">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <JFXComboBox layoutX="320.0" layoutY="136.0" prefHeight="35.0" prefWidth="161.0" promptText="Customer Id" />
-      <TextField layoutX="515.0" layoutY="136.0" prefHeight="35.0" prefWidth="248.0" promptText="Name">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="420.0" layoutY="210.0" prefHeight="35.0" prefWidth="161.0" promptText="Unit Price">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="604.0" layoutY="210.0" prefHeight="35.0" prefWidth="118.0" promptText="Qty On Hand">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="763.0" layoutY="210.0" prefHeight="35.0" prefWidth="118.0" promptText="Qty">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <Separator layoutX="737.0" layoutY="210.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="4.0" />
-      <JFXButton buttonType="RAISED" layoutX="755.0" layoutY="271.0" prefHeight="35.0" prefWidth="105.0" style="-fx-background-color: #3667f7;" text="Add To Cart" textFill="WHITE">
+      <JFXComboBox fx:id="cmbCustomerId" layoutX="320.0" layoutY="136.0" prefHeight="35.0" prefWidth="161.0" promptText="Customer Id" />
+      <JFXButton fx:id="btnAddToCart" buttonType="RAISED" layoutX="731.0" layoutY="271.0" onAction="#addToCartOnAction" prefHeight="35.0" prefWidth="105.0" style="-fx-background-color: #3667f7;" text="Add To Cart" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -85,24 +54,17 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="667.0" layoutY="271.0" prefHeight="35.0" prefWidth="67.0" ripplerFill="#962525" style="-fx-background-color: #678f5b;" text="Clear" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <TableView layoutX="38.0" layoutY="324.0" prefHeight="231.0" prefWidth="829.0">
+      <TableView fx:id="tblOrderDetails" layoutX="19.0" layoutY="324.0" prefHeight="231.0" prefWidth="861.0">
          <columns>
-            <TableColumn prefWidth="158.0" text="Item Code" />
-            <TableColumn prefWidth="285.0" text="Description" />
-            <TableColumn prefWidth="89.0" text="Qty" />
-            <TableColumn prefWidth="136.0" text="Unit Price" />
-            <TableColumn prefWidth="160.0" text="Total" />
+            <TableColumn prefWidth="119.0" text="Item Code" />
+            <TableColumn prefWidth="266.0" text="Description" />
+            <TableColumn prefWidth="118.0" text="Qty" />
+            <TableColumn prefWidth="109.0" text="Discount" />
+            <TableColumn prefWidth="132.0" text="Total" />
+            <TableColumn prefWidth="116.0" text="Delete" />
          </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="757.0" layoutY="572.0" prefHeight="35.0" prefWidth="102.0" style="-fx-background-color: #3a1ce6;" text="Place Order" textFill="WHITE">
+      <JFXButton fx:id="btnPlaceOrder" buttonType="RAISED" layoutX="749.0" layoutY="574.0" onAction="#btnPlaceOrder_OnAction" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #3a1ce6;" text="Place Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -110,15 +72,56 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="38.0" layoutY="566.0" text="TOTAL :">
+      <Label fx:id="lblTotal" layoutX="32.0" layoutY="571.0" prefHeight="47.0" prefWidth="196.0" text="0000.00/=" textFill="RED">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <Label layoutX="157.0" layoutY="566.0" prefHeight="47.0" prefWidth="161.0" text="1000.00/=" textFill="RED">
+      <JFXTextField fx:id="txtCustomerName" labelFloat="true" layoutX="520.0" layoutY="137.0" prefHeight="35.0" prefWidth="336.0" promptText="Customer Name :">
          <font>
-            <Font size="32.0" />
+            <Font size="14.0" />
          </font>
-      </Label>
+      </JFXTextField>
+      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="206.0" layoutY="200.0" prefHeight="35.0" prefWidth="319.0" promptText="Description :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="549.0" layoutY="200.0" prefHeight="35.0" prefWidth="138.0" promptText="Unit Price :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="714.0" layoutY="200.0" prefHeight="35.0" prefWidth="138.0" promptText="Qty On Hand">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtDiscount" labelFloat="true" layoutX="330.0" layoutY="271.0" prefHeight="35.0" prefWidth="138.0" promptText="Discount :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="495.0" layoutY="271.0" prefHeight="35.0" prefWidth="138.0" promptText="Qty :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="btnPrintBill" layoutX="576.0" layoutY="574.0" prefHeight="40.0" prefWidth="152.0" ripplerFill="WHITE" style="-fx-background-color: #2980b9;" text="Print Bill" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="581.0" layoutY="579.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/image/print48px.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

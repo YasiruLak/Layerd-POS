@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS orders(
     orderId VARCHAR(15),
     custId VARCHAR(15),
     orderDate DATE,
+    orderTime TIME,
+    total DECIMAL(8,2),
     CONSTRAINT PRIMARY KEY (orderId),
     CONSTRAINT FOREIGN KEY (custId) REFERENCES customer (custId) ON DELETE CASCADE ON UPDATE CASCADE
     );
@@ -42,8 +44,8 @@ DESCRIBE item;
 
 DROP TABLE IF EXISTS order_detail;
 CREATE TABLE IF NOT EXISTS order_detail(
-    itemCode VARCHAR(15),
     orderId VARCHAR(15),
+    itemCode VARCHAR(15),
     orderQty INT(11),
     discount DECIMAL(6,2),
     CONSTRAINT PRIMARY KEY (orderId, itemCode),
