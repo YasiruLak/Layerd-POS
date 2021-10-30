@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,11 +17,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.pos.bo.BoFactory;
 import lk.ijse.pos.bo.custom.OrderBO;
+import lk.ijse.pos.db.DbConnection;
 import lk.ijse.pos.dto.CustomerDTO;
 import lk.ijse.pos.dto.ItemDTO;
 import lk.ijse.pos.dto.OrderDTO;
 import lk.ijse.pos.dto.OrderDetailDTO;
 import lk.ijse.pos.view.tdm.OrderDetailTM;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -31,6 +38,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,6 +63,7 @@ public class ManageOrderController {
     public JFXTextField txtQty;
     public JFXTextField txtDiscount;
     public JFXButton btnPrintBill;
+    public JFXButton btnCancel;
     private String orderId;
 
     public void initialize(){
@@ -67,7 +76,7 @@ public class ManageOrderController {
         TableColumn<OrderDetailTM, Button> lastCol = (TableColumn<OrderDetailTM, Button>) tblOrderDetails.getColumns().get(5);
 
         lastCol.setCellValueFactory(param -> {
-            Button btnDelete = new Button("Delete");
+            Button btnDelete = new Button("Remove");
 
             btnDelete.setOnAction(event -> {
                 tblOrderDetails.getItems().remove(param.getValue());
@@ -297,9 +306,9 @@ public class ManageOrderController {
                         tm.getCode(), tm.getQty(), tm.getDiscount())).collect(Collectors.toList()),Double.parseDouble(lblTotal.getText()));
 
         if (b) {
-            new Alert(Alert.AlertType.INFORMATION, "Order has been placed successfully").show();
+            new Alert(Alert.AlertType.INFORMATION, "Successfully Done").show();
         } else {
-            new Alert(Alert.AlertType.ERROR, "Order has not been placed successfully").show();
+            new Alert(Alert.AlertType.ERROR, "Try Again").show();
         }
 
         orderId = generateNewOrderId();
@@ -335,5 +344,34 @@ public class ManageOrderController {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void printOrderDetailOnAction(ActionEvent actionEvent) {
+        try {
+            JasperDesign design = JRXmlLoader.load(this.getClass().getResourceAsStream("/lk/ijse/pos/view/report/PrintBill.jrxml"));
+            JasperReport compileReport = JasperCompileManager.compileReport(design);
+            ObservableList<OrderDetailTM> items = tblOrderDetails.getItems();
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, new JRBeanArrayDataSource(items.toArray()));
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cancelOnAction(ActionEvent actionEvent) {
+        orderId = generateNewOrderId();
+        lblId.setText("Order Id: " + orderId);
+        cmbCustomerId.getSelectionModel().clearSelection();
+        txtCustomerName.clear();
+        cmbItemCode.getSelectionModel().clearSelection();
+        txtDescription.clear();
+        txtUnitPrice.clear();
+        txtQtyOnHand.clear();
+        txtDiscount.clear();
+        txtQty.clear();
+        cmbCustomerId.setDisable(false);
+        tblOrderDetails.getItems().clear();
+        calculateTotal();
+
     }
 }

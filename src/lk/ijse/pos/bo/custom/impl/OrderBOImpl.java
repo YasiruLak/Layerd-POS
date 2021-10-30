@@ -4,10 +4,7 @@ import lk.ijse.pos.bo.custom.OrderBO;
 import lk.ijse.pos.dao.DAOFactory;
 import lk.ijse.pos.dao.custom.*;
 import lk.ijse.pos.db.DbConnection;
-import lk.ijse.pos.dto.CustomerDTO;
-import lk.ijse.pos.dto.ItemDTO;
-import lk.ijse.pos.dto.OrderDTO;
-import lk.ijse.pos.dto.OrderDetailDTO;
+import lk.ijse.pos.dto.*;
 import lk.ijse.pos.entity.Customer;
 import lk.ijse.pos.entity.Item;
 import lk.ijse.pos.entity.OrderDetails;
@@ -98,6 +95,17 @@ public class OrderBOImpl implements OrderBO{
     }
 
     @Override
+    public ArrayList<ReportDTO> getAllOrders() throws SQLException, ClassNotFoundException {
+        ArrayList<ReportDTO> allOrders = new ArrayList<>();
+        ArrayList<Orders> all = orderDAO.getAll();
+        for (Orders orders : all) {
+            allOrders.add(new ReportDTO(orders.getOrderId(), orders.getCustId(), orders.getOrderDate(),
+                    orders.getOrderTime(), orders.getTotal()));
+        }
+        return allOrders;
+    }
+
+    @Override
     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException {
         Item item = itemDAO.search(code);
         return new ItemDTO(item.getItemCode(), item.getDescription(), item.getPackSize(), item.getUnitPrice(),
@@ -120,4 +128,5 @@ public class OrderBOImpl implements OrderBO{
         return new CustomerDTO(c.getCustId(), c.getCustTitle(), c.getCustName(), c.getCustAddress(),
                 c.getCity(), c.getProvince(), c.getPostalCode());
     }
+
 }

@@ -3,7 +3,6 @@ package lk.ijse.pos.dao.custom.impl;
 import lk.ijse.pos.dao.CrudUtil;
 import lk.ijse.pos.dao.custom.OrderDetailDAO;
 import lk.ijse.pos.entity.OrderDetails;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -33,4 +32,5 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     public ArrayList<OrderDetails> getAll() throws SQLException, ClassNotFoundException {
         throw new UnsupportedOperationException("Not Supported Yet");
     }
+
 }

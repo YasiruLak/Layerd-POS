@@ -20,7 +20,7 @@
             <Image url="@assests/image/logo.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="cmbItemCode" layoutX="25.0" layoutY="200.0" prefHeight="35.0" prefWidth="152.0" promptText="Item Code" />
+      <JFXComboBox fx:id="cmbItemCode" layoutX="39.0" layoutY="200.0" prefHeight="35.0" prefWidth="138.0" promptText="Item Code" />
       <ImageView id="imgHome" fitHeight="45.0" fitWidth="45.0" layoutX="16.0" layoutY="16.0" onMouseClicked="#navigateToBack" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -72,7 +72,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label fx:id="lblTotal" layoutX="32.0" layoutY="571.0" prefHeight="47.0" prefWidth="196.0" text="0000.00/=" textFill="RED">
+      <Label fx:id="lblTotal" alignment="CENTER_RIGHT" layoutX="145.0" layoutY="571.0" prefHeight="47.0" prefWidth="138.0" textFill="RED">
          <font>
             <Font size="32.0" />
          </font>
@@ -97,17 +97,17 @@
             <Font size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtDiscount" labelFloat="true" layoutX="330.0" layoutY="271.0" prefHeight="35.0" prefWidth="138.0" promptText="Discount :">
+      <JFXTextField fx:id="txtDiscount" labelFloat="true" layoutX="39.0" layoutY="271.0" prefHeight="35.0" prefWidth="138.0" promptText="Discount :">
          <font>
             <Font size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="495.0" layoutY="271.0" prefHeight="35.0" prefWidth="138.0" promptText="Qty :">
+      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="204.0" layoutY="271.0" prefHeight="35.0" prefWidth="138.0" promptText="Qty :">
          <font>
             <Font size="14.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="btnPrintBill" layoutX="576.0" layoutY="574.0" prefHeight="40.0" prefWidth="152.0" ripplerFill="WHITE" style="-fx-background-color: #2980b9;" text="Print Bill" textFill="WHITE">
+      <JFXButton fx:id="btnPrintBill" layoutX="576.0" layoutY="574.0" onAction="#printOrderDetailOnAction" prefHeight="40.0" prefWidth="152.0" ripplerFill="WHITE" style="-fx-background-color: #2980b9;" text="Print Bill" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="17.0" />
          </font>
@@ -123,5 +123,23 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="628.0" layoutY="271.0" onAction="#cancelOnAction" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: green;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="28.0" layoutY="571.0" prefHeight="47.0" prefWidth="117.0" text="TOTAL :">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="286.0" layoutY="571.0" prefHeight="47.0" prefWidth="38.0" text="/=">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -24,7 +24,7 @@
             <Image url="@assests/image/logo.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgCustomer" fitHeight="100.0" fitWidth="100.0" layoutX="143.0" layoutY="179.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgCustomer" fitHeight="100.0" fitWidth="100.0" layoutX="212.0" layoutY="167.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assests/image/business_building_96px.png" />
          </image>
@@ -32,17 +32,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="imgOrders" fitHeight="100.0" fitWidth="100.0" layoutX="287.0" layoutY="193.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgOrders" fitHeight="100.0" fitWidth="100.0" layoutX="356.0" layoutY="179.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assests/image/add_shopping_cart_96px.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <ImageView fx:id="imgPayment" fitHeight="100.0" fitWidth="100.0" layoutX="426.0" layoutY="193.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assests/image/sell_96px.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />

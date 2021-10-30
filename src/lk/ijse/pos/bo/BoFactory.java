@@ -1,8 +1,7 @@
 package lk.ijse.pos.bo;
 
-import lk.ijse.pos.bo.custom.impl.CustomerBOImpl;
-import lk.ijse.pos.bo.custom.impl.ItemBOImpl;
-import lk.ijse.pos.bo.custom.impl.OrderBOImpl;
+import lk.ijse.pos.bo.custom.CustomerIncomeBO;
+import lk.ijse.pos.bo.custom.impl.*;
 
 public class BoFactory {
     private static BoFactory boFactory;
@@ -25,12 +24,16 @@ public class BoFactory {
                 return new CustomerBOImpl();
             case ORDER:
                 return new OrderBOImpl();
+            case ITEMMOVE:
+                return new ItemMoveBOImpl();
+            case CUSTOMERINCOME:
+                return new CustomerIncomeBOImpl();
             default:
                 return null;
         }
     }
 
     public enum BoTypes {
-        CUSTOMER, ITEM, ORDER
+        CUSTOMER, ITEM, ORDER, ITEMMOVE, CUSTOMERINCOME
     }
 }

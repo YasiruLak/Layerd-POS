@@ -54,3 +54,9 @@ CREATE TABLE IF NOT EXISTS order_detail(
     );
 SHOW TABLES ;
 DESCRIBE order_detail;
+
+SELECT itemCode, SUM(orderQty) FROM order_detail GROUP BY itemCode ORDER BY orderQty DESC;
+
+SELECT custId, SUM(total) FROM orders GROUP BY custId ORDER BY total DESC;
+
+select o.custId,o.orderId,o.orderDate,o.total,od.itemCode,od.orderQty,od.discount from orders o inner join orde_detail od on o.orderId=od.orderId where o.orderId=$P{orderId};

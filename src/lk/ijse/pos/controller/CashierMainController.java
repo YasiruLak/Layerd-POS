@@ -45,9 +45,6 @@ public class CashierMainController {
                 case "imgCustomer":
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/pos/view/CustomerManage.fxml"));
                     break;
-                case "imgPayment":
-                    root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/pos/view/PaymentManage.fxml"));
-                    break;
                 case "imgOrders":
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/pos/view/ManageOrder.fxml"));
                     break;
@@ -76,10 +73,6 @@ public class CashierMainController {
                 case "imgCustomer":
                     lblMenu.setText("Manage Customers");
                     lblDescription.setText("Click to add, edit, delete, search or view customers");
-                    break;
-                case "imgPayment":
-                    lblMenu.setText("Make Payment");
-                    lblDescription.setText("Click if you want to make payment");
                     break;
                 case "imgOrders":
                     lblMenu.setText("Place Orders");

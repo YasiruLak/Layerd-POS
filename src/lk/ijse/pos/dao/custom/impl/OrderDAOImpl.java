@@ -2,6 +2,7 @@ package lk.ijse.pos.dao.custom.impl;
 
 import lk.ijse.pos.dao.CrudUtil;
 import lk.ijse.pos.dao.custom.OrderDAO;
+import lk.ijse.pos.entity.Customer;
 import lk.ijse.pos.entity.Orders;
 
 import java.sql.Date;
@@ -43,7 +44,18 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public ArrayList<Orders> getAll() throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not Supported Yet");
+        ArrayList<Orders> allOrders = new ArrayList();
+        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM orders");
+        while (rst.next()) {
+            allOrders.add(new Orders(rst.getString("orderId"),
+                            rst.getString("custId"),
+                            rst.getDate("orderDate"),
+                            rst.getTime("orderTime"),
+                            rst.getDouble("total")
+                    )
+            );
+        }
+        return allOrders;
     }
 
     @Override
