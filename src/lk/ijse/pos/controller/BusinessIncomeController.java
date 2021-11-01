@@ -2,6 +2,7 @@ package lk.ijse.pos.controller;
 
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,9 +12,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.pos.db.DbConnection;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 
 public class BusinessIncomeController {
     public AnchorPane root;
@@ -29,23 +36,53 @@ public class BusinessIncomeController {
         Platform.runLater(() -> primaryStage.sizeToScene());
     }
 
-    public void playMouseEnterAnimation(MouseEvent event) {
-        ScaleTransition scaleT = new ScaleTransition(Duration.millis(200));
-        scaleT.setToX(1.2);
-        scaleT.setToY(1.2);
-        scaleT.play();
 
-        DropShadow glow = new DropShadow();
-        glow.setColor(Color.CORNFLOWERBLUE);
-        glow.setWidth(20);
-        glow.setHeight(20);
-        glow.setRadius(20);
+    public void dailyIncomeOnAction(ActionEvent actionEvent) {
+        try {
+            JasperDesign design = JRXmlLoader.load(this.getClass().getResourceAsStream("/lk/ijse/pos/view/report/DailyIncome.jrxml"));
+            JasperReport compileReport = JasperCompileManager.compileReport(design);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, DbConnection.getDbConnection().getConnection());
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public void playMouseExitAnimation(MouseEvent event) {
-        ScaleTransition scaleT = new ScaleTransition(Duration.millis(200));
-        scaleT.setToX(1);
-        scaleT.setToY(1);
-        scaleT.play();
+    public void monthlyIncomeOnAction(ActionEvent actionEvent) {
+        try {
+            JasperDesign design = JRXmlLoader.load(this.getClass().getResourceAsStream("/lk/ijse/pos/view/report/MonthlyIncome.jrxml"));
+            JasperReport compileReport = JasperCompileManager.compileReport(design);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, DbConnection.getDbConnection().getConnection());
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void annuallyIncomeOnAction(ActionEvent actionEvent) {
+        try {
+            JasperDesign design = JRXmlLoader.load(this.getClass().getResourceAsStream("/lk/ijse/pos/view/report/AnnuallyIncome.jrxml"));
+            JasperReport compileReport = JasperCompileManager.compileReport(design);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, DbConnection.getDbConnection().getConnection());
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

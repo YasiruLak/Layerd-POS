@@ -28,12 +28,14 @@ public class BoFactory {
                 return new ItemMoveBOImpl();
             case CUSTOMERINCOME:
                 return new CustomerIncomeBOImpl();
+            case LOGIN:
+                return new LoginBOImpl();
             default:
                 return null;
         }
     }
 
     public enum BoTypes {
-        CUSTOMER, ITEM, ORDER, ITEMMOVE, CUSTOMERINCOME
+        CUSTOMER, ITEM, ORDER, ITEMMOVE, CUSTOMERINCOME, LOGIN
     }
 }

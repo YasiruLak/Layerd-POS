@@ -55,8 +55,23 @@ CREATE TABLE IF NOT EXISTS order_detail(
 SHOW TABLES ;
 DESCRIBE order_detail;
 
+DROP TABLE IF EXISTS login;
+CREATE TABLE IF NOT EXISTS login(
+    user_name VARCHAR(25) NOT NULL,
+    password VARCHAR (25) NOT NULL,
+    CONSTRAINT PRIMARY KEY (user_name)
+    );
+SHOW TABLES ;
+DESCRIBE login;
+
 SELECT itemCode, SUM(orderQty) FROM order_detail GROUP BY itemCode ORDER BY orderQty DESC;
 
 SELECT custId, SUM(total) FROM orders GROUP BY custId ORDER BY total DESC;
 
-select o.custId,o.orderId,o.orderDate,o.total,od.itemCode,od.orderQty,od.discount from orders o inner join orde_detail od on o.orderId=od.orderId where o.orderId=$P{orderId};
+SELECT orderDate, SUM(total) FROM orders GROUP BY orderDate ORDER BY total DESC;
+
+SELECT extract(MONTH FROM(orderDate)) ,sum(order_detail.orderQty),count(orders.orderId),sum(orders.total)  FROM orders INNER JOIN order_detail ON orders.orderId = order_detail.orderId GROUP BY orderDate;
+
+SELECT extract(MONTH FROM(orderDate)) ,sum(total) FROM orders GROUP BY extract(MONTH FROM(orderDate)) ORDER BY total DESC;
+
+SELECT extract(YEAR FROM(orderDate)) ,sum(total) FROM orders GROUP BY extract(YEAR FROM(orderDate)) ORDER BY total DESC;

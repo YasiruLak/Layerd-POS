@@ -25,18 +25,18 @@ public class DAOFactory {
                 return new OrderDAOImpl();
             case ORDERDETAILS:
                 return new OrderDetailDAOImpl();
-            case QUERYDAO:
-                return new QueryDAOImpl();
             case ITEMMOVE:
                 return new ItemMoveDAOImpl();
             case CUSTOMERINCOME:
                 return new CustomerIncomeDAOImpl();
+            case LOGIN:
+                return new LoginDAOImpl();
             default:
                 return null;
         }
     }
 
     public enum DAOTypes {
-        CUSTOMER, ITEM, ORDER, ORDERDETAILS, QUERYDAO, ITEMMOVE, CUSTOMERINCOME
+        CUSTOMER, ITEM, ORDER, ORDERDETAILS, ITEMMOVE, CUSTOMERINCOME, LOGIN
     }
 }

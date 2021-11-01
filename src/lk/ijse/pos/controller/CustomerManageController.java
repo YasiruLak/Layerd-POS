@@ -43,7 +43,7 @@ public class CustomerManageController {
     public JFXButton btnSave;
     public JFXButton btnDelete;
     public JFXComboBox cmbCustomerTitle;
-    ;
+
 
     public void initialize() {
         tblCustomers.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));

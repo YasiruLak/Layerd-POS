@@ -8,22 +8,35 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.pos.bo.BoFactory;
+import lk.ijse.pos.bo.custom.LoginBO;
+import lk.ijse.pos.dto.LoginDTO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 
 public class LogInPageController{
+
+    private final LoginBO loginBO = (LoginBO) BoFactory.getBOFactory().getBO(BoFactory.BoTypes.LOGIN);
+
     public AnchorPane mainLayer;
     public JFXTextField txtUserName;
     public JFXPasswordField pswPassword;
     public JFXButton btnLogIn;
 
-    public void btnLogInOnAction(ActionEvent actionEvent) throws IOException {
+    public void btnLogInOnAction(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
 
-        if (txtUserName.getText().equals("Admin")){
+        String userName = txtUserName.getText();
+        String password = pswPassword.getText();
 
+        LoginDTO loginDTO = new LoginDTO(userName, password);
+        loginBO.ifUserExists(userName, password);
+
+        if (loginDTO.getUserName().equals("Yasiru") && loginDTO.getPassword().equals("1234")){
             Stage logStage = (Stage) btnLogIn.getScene().getWindow();
             logStage.close();
 
@@ -36,8 +49,8 @@ public class LogInPageController{
             stage.centerOnScreen();
             stage.setScene(scene);
             stage.show();
-        }else if (txtUserName.getText().equals("Cashier")){
 
+        }else if(loginDTO.getUserName().equals("Kasun") && loginDTO.getPassword().equals("1234")){
             Stage logStage = (Stage) btnLogIn.getScene().getWindow();
             logStage.close();
 
@@ -50,6 +63,9 @@ public class LogInPageController{
             stage.centerOnScreen();
             stage.setScene(scene);
             stage.show();
+        }else
+            new Alert(Alert.AlertType.WARNING, "Invalid User Name or Password").show();
+
         }
-    }
+
 }
